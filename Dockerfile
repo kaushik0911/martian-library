@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client npm
+RUN npm install --global yarn
 WORKDIR /martian-library
 COPY Gemfile /martian-library/Gemfile
 COPY Gemfile.lock /martian-library/Gemfile.lock
