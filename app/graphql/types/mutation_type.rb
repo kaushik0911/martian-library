@@ -8,6 +8,6 @@ module Types
     end
 
     field :sign_in, mutation: Mutations::SignInMutation
-    
+    field :create_item, mutation: Mutations::CreateItem
   end
 end
