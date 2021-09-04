@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < Types::BaseObject
     # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
@@ -8,34 +10,31 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :item,
+          Types::ItemType,
+          null: false,
+          description: 'Returns a item in the martian library' do
+      argument :id, ID, required: true
     end
-
     field :items,
-      [Types::ItemType],
-      null: false,
-      description: "Returns a list of items in the martian library"
+          [Types::ItemType],
+          null: false,
+          description: 'Returns a list of items in the martian library'
+    field :me, Types::UserType, null: true
+    field :test_field, String, null: false,
+                               description: 'An example field added by the generator'
+    def test_field
+      'Hello World!'
+    end
 
     def items
       Item.preload(:user)
     end
 
-    field :item,
-      Types::ItemType,
-      null: false,
-      description: "Returns a item in the martian library" do
-
-        argument :id, ID, required: true
-    end
-    
     def item(id: nil)
       Item.preload(:user).find(id)
     end
 
-    field :me, Types::UserType, null: true
     def me
       context[:current_user]
     end

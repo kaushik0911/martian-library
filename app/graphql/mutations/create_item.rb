@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module Mutations
   class CreateItem < Mutations::BaseMutation
     null true
 
-    argument :title, String, required: true
     argument :description, String, required: false
     argument :image_url, String, required: false
+    argument :title, String, required: true
 
-    field :item, Types::ItemType, null: false
     field :errors, [String], null: false
+    field :item, Types::ItemType, null: false
 
-    def resolve(title:, description:, image_url:)
+    def resolve(title:, description: nil, image_url: nil)
       item = Item.new(
         title: title,
         description: description,
