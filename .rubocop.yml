@@ -1,1 +1,10 @@
 require: rubocop-graphql
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/*/*'
+    - 'config/initializers/*'
+
+Style/Documentation:
+  Enabled: false
