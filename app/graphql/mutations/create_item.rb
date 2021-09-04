@@ -4,12 +4,14 @@ module Mutations
   class CreateItem < Mutations::BaseMutation
     null true
 
-    argument :description, String, required: false
-    argument :image_url, String, required: false
-    argument :title, String, required: true
+    argument :description, String, required: false, description: 'This is the item disciprion'
+    argument :image_url, String, required: false, description: 'Image resource path'
+    # rubocop:disable GraphQL/ExtractInputType
+    argument :title, String, required: true, description: 'Item title, can also used for img alt attribute'
+    # rubocop:enable GraphQL/ExtractInputType
 
-    field :errors, [String], null: false
-    field :item, Types::ItemType, null: false
+    field :errors, [String], null: false, description: 'Error exceptions'
+    field :item, Types::ItemType, null: false, description: 'Item object'
 
     def resolve(title:, description: nil, image_url: nil)
       item = Item.new(

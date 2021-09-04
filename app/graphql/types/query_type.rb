@@ -14,19 +14,19 @@ module Types
           Types::ItemType,
           null: false,
           description: 'Returns a item in the martian library' do
-      argument :id, ID, required: true
+      argument :id, ID, required: true,
+                        description: 'Need to pass item id'
     end
     field :items,
           [Types::ItemType],
           null: false,
           description: 'Returns a list of items in the martian library'
-    field :me, Types::UserType, null: true
+    field :me,
+          Types::UserType,
+          null: true,
+          description: 'Returns my details'
     field :test_field, String, null: false,
                                description: 'An example field added by the generator'
-    def test_field
-      'Hello World!'
-    end
-
     def items
       Item.preload(:user)
     end
@@ -37,6 +37,10 @@ module Types
 
     def me
       context[:current_user]
+    end
+
+    def test_field
+      'Hello World!'
     end
   end
 end

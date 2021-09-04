@@ -2,10 +2,13 @@
 
 module Mutations
   class SignInMutation < Mutations::BaseMutation
-    argument :email, String, required: true
+    argument :email, String, required: true,
+                             description: 'Provide user email'
 
-    field :token, String, null: true
-    field :user, Types::UserType, null: true
+    field :token, String, null: true,
+                          description: 'User token to communicate'
+    field :user, Types::UserType, null: true,
+                                  description: 'User object'
 
     def resolve(email:)
       user = User.find_by!(email: email)

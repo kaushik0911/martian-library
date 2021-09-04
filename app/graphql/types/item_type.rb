@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable GraphQL/FieldDescription
 module Types
   class ItemType < Types::BaseObject
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
@@ -12,3 +13,4 @@ module Types
     field :user_id, Integer, null: false
   end
 end
+# rubocop:enable GraphQL/FieldDescription
