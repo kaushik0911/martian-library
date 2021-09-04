@@ -91,6 +91,7 @@ GEM
       devise_token_auth (>= 0.1.43, < 2.0)
       graphql (>= 1.8, < 1.13.0)
       rails (>= 4.2, < 6.2)
+    hashie (4.1.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -113,6 +114,10 @@ GEM
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    omniauth (2.0.4)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+      rack-protection
     orm_adapter (0.5.0)
     parallel (1.20.1)
     parser (3.0.2.0)
@@ -124,6 +129,8 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.3)
       rack (>= 1.2.0)
+    rack-protection (2.1.0)
+      rack
     rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
@@ -229,6 +236,7 @@ DEPENDENCIES
   graphql_devise
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  omniauth
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
